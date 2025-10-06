@@ -11,5 +11,3 @@ def fizz_buzz(n):
 print("Введите число: ")
 n = int(input())
 fizz_buzz(n)
-
-
