@@ -42,3 +42,34 @@ def test_contains_positive(input_str, symbol1):
 ])
 def test_contains_negative(input_str, symbol1):
     assert string_utils.contains(input_str, symbol1) == False
+
+#позитивный тест - удаление подстроки
+@pytest.mark.parametrize("string, symbol, expected_result", [
+    ("Тест", "е", "Тст"),
+    ("123abc", "3", "12abc")
+    ])
+def test_delete_symbol(string, symbol, expected_result):
+    assert string_utils.delete_symbol(string, symbol) == expected_result
+
+#негативный тест - удаление подстроки
+@pytest.mark.parametrize("string, symbol, expected_result", [
+    ("123abc", "5", "123abc")
+    ])
+def test_delete_symbol(string, symbol, expected_result):
+    assert string_utils.delete_symbol(string, symbol) == expected_result
+
+#позитивный тест - удаление пробела в начале, если они есть
+@pytest.mark.parametrize("string, whitespace", [
+    ("   Skypro", "Skypro"),
+    ("   Тест", "Тест"),
+    ])
+def test_trim_positive(string, whitespace):
+    assert string_utils.trim(whitespace) == whitespace
+
+#негативный тест - удаление пробела в начале, если они есть
+@pytest.mark.parametrize("string, whitespace", [
+    ("Skypro", "Skypro"),
+    ("Тест", "Тест"),
+    ])
+def test_trim_negative(string, whitespace):
+    assert string_utils.trim(whitespace) == whitespace
